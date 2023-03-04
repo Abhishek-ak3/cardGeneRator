@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CARD GENERATOR</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #343a40 !important;
+            color: white;
+            padding: 1px;
+            font-size: 24px;
+            text-align: center;
+        }
+
+        .items img {
+            height: 23px;
+            padding: 0 2px;
+        }
+
+        .boxes {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 40px;
+        }
+
+        .items {
+            border: 2px solid black;
+            align-items: center;
+            display: flex;
+            padding: 8px;
+            background-color: rgb(62 62 179);
+            color: white;
+        }
+
+        .container {
+            width: 80vw;
+            margin: 50px auto;
+            background-color: #e9ecef;
+            border-radius: 19px;
+            min-height: 90vh;
+            color: black;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            font-size: 19px;
+            text-align: center;
+        }
+
+        .stuff img {
+            height: 40px;
+        }
+
+        .stuff {
+            padding: 25px;
+        }
+
+        .lg {
+            font-size: 45px;
+        }
+
+        .a-1 input {
+            width: 52%;
+            padding: 10px;
+            border-radius: 19px;
+            margin: 9px;
+            color: black;
+        }
+
+        .center {
+            text-align: center;
+        }
+
+        .btn {
+            background-color: rgb(40, 40, 210);
+            color: white;
+            box-shadow: 0px 0p 5px rgb(58, 58, 158);
+            padding: 15px;
+            border-radius: 18px;
+        }
+
+        .btn:hover {
+            background-color: rgb(75, 75, 190);
+            cursor: pointer;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        .center {
+            text-align: center;
+        }
+        .bk:hover{
+     background-color: rgb(48, 48, 236);
+     cursor: pointer;
+        }
+
+        @page {
+            size: 80mm 55mm !important;
+            margin: 0;
+        }
+        @media screen and (max-width: 480px) {
+  .boxes {
+    display: flex;
+    flex-wrap: wrap;
+    /* flex-direction: column; */
+  }
+  .changetext input{
+    width: 65%;
+  }
+}
+    </style>
+</head>
+
+<body>
+    <header>
+        <h2>I CARD GENERATOR FOR</h2>
+    </header>
+    <div class="boxes">
+        <button onclick="switchto('student')" class="bk">
+            <div class="items"><img
+                    src="https://th.bing.com/th?id=OIP.5o2mHA9CSq5EPHKP81iQKQHaEI&w=334&h=186&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+                    alt="">STUDENTS</div>
+        </button>
+        <button onclick="switchto('company')" class="bk">
+            <div class="items"><img
+                    src="https://th.bing.com/th?id=OIP.dDD0AJxnWMjo7Vi_PYcqAQHaHa&w=250&h=250&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+                    alt="">COMPANY</div>
+        </button>
+        <button class="bk">
+            <div class="items"><img
+                    src="https://th.bing.com/th?id=OIP.DrQ9r0UM3pZwCrGXo-8d6QHaEI&w=334&h=186&c=8&rs=1&qlt=90&o=6&dpr=1.3&pid=3.1&rm=2"
+                    alt="">SOURCE CODE</div>
+        </button>
+    </div>
+    <div class="container">
+        <div class="stuff">
+            <div>
+                <h3> <img src="./th-removebg-preview.png" alt=""> <span class="lg">Hi, There</span></h3>
+                <p>You can just simply fill out this form and download your generate I-card</p>
+            </div>
+        </div>
+        <div class="changetext">
+            <div class="a-1">
+                <input type="number" placeholder="Enter you Enrollment No." id="enrolno">
+            </div>
+            <div class="a-1">
+                <input type="text" placeholder="Enter your NAME" id="name">
+            </div>
+            <div class="a-1">
+                <input type="text" placeholder="Enter your SCHOOL" id="school">
+            </div>
+            <div class="a-1">
+                <input type="number" placeholder="Enter your CLASS" id="class">
+            </div>
+
+            <div class="center">
+                <h2>DATE OF BIRTH</h2>
+                <div class="a-1">
+                    <input type="date" id="date">
+                </div>
+                <button class="btn" onclick="printing()">DOWNLOAD</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        const printer = document.querySelector('.container');
+        var changetext = document.querySelector('.changetext');
+
+        const printing = () => {
+            let enrolno = document.querySelector('#enrolno').value;
+            let name = document.querySelector('#name').value;
+            let school = document.querySelector('#school').value;
+            let classes = document.querySelector('#class').value;
+            let dates = document.querySelector('#date').value;
+
+            document.body.innerHTML = `
+            <h3 class="center">${school} Card</h3>
+<table style="width:100%,">
+<tr>
+<th>Name:</th>
+<td>${name}</td>
+</tr>
+<tr>
+<th>Enrollment No.</th>
+<td>${enrolno}</td>
+</tr>
+
+<tr>
+<th>classes </th>
+<td>${classes}</td>
+</tr>
+<tr>
+<th>dates:</th>
+<td>${dates}</td>
+</tr>
+<tr>
+</table>
+`
+            print();
+            return false;
+
+        }
+
+        const printing2 = () => {
+            let empid = document.querySelector('#empid').value;
+            let name = document.querySelector('#name').value;
+            let companyname = document.querySelector('#companyname').value;
+            let Profession = document.querySelector('#Profession').value;
+            let dated = document.querySelector('#date').value;
+
+            document.body.innerHTML = `
+            <h3 class="center">${companyname} Card</h3>
+<table style="width:100%,">
+<tr>
+<th>Employee Id:</th>
+<td>${empid}</td>
+</tr>
+<tr>
+<th>Name</th>
+<td>${name}</td>
+</tr>
+
+<tr>
+<th>Profession </th>
+<td>${Profession}</td>
+</tr>
+<tr>
+<th>D.O.B</th>
+<td>${dated}</td>
+</tr>
+<tr>
+</table>
+`
+print();
+return false;
+        }
+
+        const switchto = (type) => {
+            if (type == "student") {
+                changetext.innerHTML = `
+                <div class="a-1">
+                <input type="text" placeholder="Enter you Enrollment No." id="enrolno">
+            </div>
+            <div class="a-1">
+                <input type="text" placeholder="Enter your NAME" id="name">
+            </div>
+            <div class="a-1">
+                <input type="text" placeholder="Enter your SCHOOL" id="school">
+            </div>
+            <div class="a-1">
+                <input type="text" placeholder="Enter your CLASS" id="class">
+            </div>
+    
+            <div class="center">
+                <h2>DATE OF BIRTH</h2>
+                <div class="a-1">
+                    <input type="date" id="date">
+                </div>
+                <button class="btn" onclick="printing()">DOWNLOAD</button>
+            </div>
+                `
+            }
+            else if (type == "company") {
+                changetext.innerHTML = `
+                <div class="a-1">
+                <input type="text" placeholder="Enter you Employee ID" id="empid">
+            </div>
+            <div class="a-1">
+                <input type="text" placeholder="Enter your NAME" id="name">
+            </div>
+            <div class="a-1">
+                <input type="text" placeholder="Enter your Company Name" id="companyname">
+            </div>
+            <div class="a-1">
+                <input type="text" placeholder="Enter your Profession" id="Profession">
+            </div>
+    
+            <div class="center">
+                <h2>DATE OF BIRTH</h2>
+                <div class="a-1">
+                    <input type="date" id="date">
+                </div>
+                <button class="btn" onclick="printing2()">DOWNLOAD</button>
+            </div>
+                `
+                
+            }
+        }
+
+    </script>
+
+</body>
+
+</html>
